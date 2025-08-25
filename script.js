@@ -1,4 +1,3 @@
-// Just messages now (no href links here)
 const messages = [
   "🚨 Stop working! The fridge light mystery still isn’t solved.",
   "😜 Instagram reels > assignments.",
@@ -7,7 +6,7 @@ const messages = [
   "🎬 YouTube has exactly what you didn’t know you wanted to watch."
 ];
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.alarms.create("reminder", { delayInMinutes: 1, periodInMinutes: 10 });
+  chrome.alarms.create("reminder", { delayInMinutes: 1, periodInMinutes: 1 });
 });
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === "reminder") {
@@ -21,7 +20,6 @@ chrome.alarms.onAlarm.addListener((alarm) => {
         priority: 2
       },
       (id) => {
-        // Auto-clear notification after 10 seconds
         setTimeout(() => {
           chrome.notifications.clear(id);
         }, 10000);
